@@ -7,10 +7,8 @@
   <link rel="stylesheet" href="style.css">
 
   <script>
-    // ← Set your password here:
-    const password = "19.10.2025"; // your password
+    const password = "19.10.2025";
 
-    // Check if user is already authenticated for this session
     if (sessionStorage.getItem("authenticated") !== "true") {
       const userPass = prompt("Enter password to access the site:");
       if (userPass === password) {
@@ -40,45 +38,30 @@
   <h1>For You ❤️</h1>
   <p>Stories I’m recording just for you.</p>
 
-  <!-- Book 1 -->
+  <!-- The Explorer - Katherine Rundell -->
   <div class="book" onclick="toggleChapters('book1')">
     <h2>Audiobook One</h2>
-    <p>A fun story I recorded just for you.</p>
+    <p>A special story recorded just for you.</p>
     <div class="chapter-list" id="book1">
+
       <div class="chapter">
         <h3>Chapter 1</h3>
         <audio controls>
-          <source src="audio/test-audio.mp3" type="audio/mpeg">
+          <source src="audio/chapter-1.mp3" type="audio/mpeg">
           Your browser does not support the audio element.
         </audio>
-        <a href="audio/test-audio.mp3" download>Download Chapter 1</a>
+        <a href="audio/chapter-1.mp3" download>Download Chapter 1</a>
       </div>
-      <div class="chapter">
-        <h3>Chapter 2 – Coming soon</h3>
-        <p>This chapter isn’t ready yet.</p>
-      </div>
-    </div>
-  </div>
 
-  <!-- Book 2 -->
-  <div class="book" onclick="toggleChapters('book2')">
-    <h2>Audiobook Two</h2>
-    <p>Another story I recorded just for you.</p>
-    <div class="chapter-list" id="book2">
-      <div class="chapter">
-        <h3>Chapter 1</h3>
-        <audio controls>
-          <source src="audio/book2-ch1.mp3" type="audio/mpeg">
-        </audio>
-        <a href="audio/book2-ch1.mp3" download>Download Chapter 1</a>
-      </div>
       <div class="chapter">
         <h3>Chapter 2</h3>
         <audio controls>
-          <source src="audio/book2-ch2.mp3" type="audio/mpeg">
+          <source src="audio/chapter-2.mp3" type="audio/mpeg">
+          Your browser does not support the audio element.
         </audio>
-        <a href="audio/book2-ch2.mp3" download>Download Chapter 2</a>
+        <a href="audio/chapter-2.mp3" download>Download Chapter 2</a>
       </div>
+
     </div>
   </div>
 
