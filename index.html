@@ -1,6 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Private Site</title>
+  <script>
+    // Set your password here
+    const password = "19.10.2025"; 
+
+    // Check if password is stored in sessionStorage
+    if (sessionStorage.getItem("authenticated") !== "true") {
+      const userPass = prompt("Enter password to access this site:");
+      if (userPass === password) {
+        // Correct password, save in session so they don't need to re-enter
+        sessionStorage.setItem("authenticated", "true");
+      } else {
+        alert("Wrong password! Access denied.");
+        // Redirect somewhere safe (like Google)
+        window.location.href = "https://www.google.com";
+      }
+    }
+  </script>
+</head>
+<body>
+  <h1>Welcome to Your Private Audiobooks</h1>
+  <p>All content is behind a password.</p>
+  <!-- Your audio players and download buttons go here -->
+</body>
+</html>
+
   <meta charset="UTF-8">
   <title>For You ❤️</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
