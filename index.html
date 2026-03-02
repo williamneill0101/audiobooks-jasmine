@@ -1,63 +1,97 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Private Site</title>
-  <script>
-    // Set your password here
-    const password = "19.10.2025"; 
-
-    // Check if password is stored in sessionStorage
-    if (sessionStorage.getItem("authenticated") !== "true") {
-      const userPass = prompt("Enter password to access this site:");
-      if (userPass === password) {
-        // Correct password, save in session so they don't need to re-enter
-        sessionStorage.setItem("authenticated", "true");
-      } else {
-        alert("Wrong password! Access denied.");
-        // Redirect somewhere safe (like Google)
-        window.location.href = "https://www.google.com";
-      }
-    }
-  </script>
-</head>
-<body>
-  <h1>Welcome to Your Private Audiobooks</h1>
-  <p>All content is behind a password.</p>
-  <!-- Your audio players and download buttons go here -->
-</body>
-</html>
-
   <meta charset="UTF-8">
   <title>For You ❤️</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css">
+
+  <script>
+    // ← Set your password here:
+    const password = "19.10.2025"; // your password
+
+    // Check if user is already authenticated for this session
+    if (sessionStorage.getItem("authenticated") !== "true") {
+      const userPass = prompt("Enter password to access the site:");
+      if (userPass === password) {
+        sessionStorage.setItem("authenticated", "true");
+      } else {
+        alert("Wrong password! Access denied.");
+        window.location.href = "https://www.google.com";
+      }
+    }
+  </script>
+
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; background: #f7f7f7; color: #333; }
+    h1 { text-align: center; margin-bottom: 30px; }
+    .book { margin: 20px 0; padding: 15px; background: #fff; border-radius: 10px; box-shadow: 0 0 5px #ccc; cursor: pointer; }
+    .book h2 { margin: 0; }
+    .chapter-list { display: none; margin-top: 10px; }
+    .chapter { margin: 10px 0; }
+    audio { width: 100%; max-width: 600px; display: block; margin-bottom: 5px; }
+    a { text-decoration: none; color: #007BFF; }
+    a:hover { text-decoration: underline; }
+    .book:hover { background-color: #f0f0f0; }
+  </style>
 </head>
 <body>
 
   <h1>For You ❤️</h1>
   <p>Stories I’m recording just for you.</p>
 
-<div class="chapter">
-  <h2>Audiobook One</h2>
-  <p>Chapter 1</p>
-
-  <audio controls>
-    <source src="audio/test-audio.mp3" type="audio/mpeg">
-    Your browser does not support audio.
-  </audio>
-
-  <br>
-  <a href="audio/test-audio.mp3" download>Download Chapter</a>
-</div>
-
-  <div class="chapter coming-soon">
+  <!-- Book 1 -->
+  <div class="book" onclick="toggleChapters('book1')">
     <h2>Audiobook One</h2>
-    <p>Chapter 2 – Coming soon</p>
+    <p>A fun story I recorded just for you.</p>
+    <div class="chapter-list" id="book1">
+      <div class="chapter">
+        <h3>Chapter 1</h3>
+        <audio controls>
+          <source src="audio/test-audio.mp3" type="audio/mpeg">
+          Your browser does not support the audio element.
+        </audio>
+        <a href="audio/test-audio.mp3" download>Download Chapter 1</a>
+      </div>
+      <div class="chapter">
+        <h3>Chapter 2 – Coming soon</h3>
+        <p>This chapter isn’t ready yet.</p>
+      </div>
+    </div>
   </div>
+
+  <!-- Book 2 -->
+  <div class="book" onclick="toggleChapters('book2')">
+    <h2>Audiobook Two</h2>
+    <p>Another story I recorded just for you.</p>
+    <div class="chapter-list" id="book2">
+      <div class="chapter">
+        <h3>Chapter 1</h3>
+        <audio controls>
+          <source src="audio/book2-ch1.mp3" type="audio/mpeg">
+        </audio>
+        <a href="audio/book2-ch1.mp3" download>Download Chapter 1</a>
+      </div>
+      <div class="chapter">
+        <h3>Chapter 2</h3>
+        <audio controls>
+          <source src="audio/book2-ch2.mp3" type="audio/mpeg">
+        </audio>
+        <a href="audio/book2-ch2.mp3" download>Download Chapter 2</a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function toggleChapters(bookId) {
+      const chapters = document.getElementById(bookId);
+      if (chapters.style.display === "block") {
+        chapters.style.display = "none";
+      } else {
+        chapters.style.display = "block";
+      }
+    }
+  </script>
 
 </body>
 </html>
