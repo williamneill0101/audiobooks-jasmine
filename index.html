@@ -1,263 +1,613 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Audiobook</title>
 
-<meta charset="UTF-8">
-<title>For You ❤️</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(to bottom, #fff0f6, #ffe4ee);
+      color: #333;
+      min-height: 100vh;
+      padding: 20px;
+    }
 
-<script>
-const password = "19.10.2025";
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      background: rgba(255, 255, 255, 0.96);
+      border-radius: 20px;
+      padding: 24px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    }
 
-if (sessionStorage.getItem("authenticated") !== "true") {
+    .hero {
+      text-align: center;
+      margin-bottom: 30px;
+    }
 
-const userPass = prompt("Enter password to access the site:");
+    .book-cover {
+      width: 220px;
+      max-width: 100%;
+      border-radius: 18px;
+      box-shadow: 0 8px 22px rgba(0, 0, 0, 0.15);
+      margin-bottom: 18px;
+      object-fit: cover;
+    }
 
-if (userPass === password) {
-sessionStorage.setItem("authenticated","true");
-} else {
-alert("Wrong password! Access denied.");
-window.location.href="https://www.google.com";
-}
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 10px;
+      color: #d63384;
+    }
 
-}
-</script>
+    .subtitle {
+      font-size: 1rem;
+      color: #666;
+      margin-bottom: 20px;
+    }
 
-<style>
+    .continue-box {
+      background: #fff6fb;
+      border: 1px solid #ffc6df;
+      padding: 16px;
+      border-radius: 16px;
+      margin-bottom: 25px;
+      text-align: center;
+    }
 
-body{
-font-family:'Poppins',sans-serif;
-padding:20px;
-background:linear-gradient(135deg,#f5f7fa,#e4e8f0);
-color:#333;
-text-align:center;
-}
+    .continue-box p {
+      margin-bottom: 10px;
+      color: #666;
+    }
 
-h1{
-margin-bottom:10px;
-}
+    .top-controls {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      justify-content: center;
+      margin-bottom: 30px;
+    }
 
-p{
-margin-bottom:30px;
-}
+    button {
+      background: linear-gradient(135deg, #ff4fa3, #d63384);
+      color: white;
+      border: none;
+      padding: 12px 18px;
+      border-radius: 999px;
+      font-size: 0.95rem;
+      cursor: pointer;
+      transition: 0.2s ease;
+      box-shadow: 0 5px 14px rgba(214, 51, 132, 0.25);
+    }
 
-.book{
-margin:20px auto;
-padding:20px;
-background:#fff;
-border-radius:10px;
-box-shadow:0 0 8px rgba(0,0,0,0.1);
-cursor:pointer;
-max-width:600px;
-text-align:left;
-}
+    button:hover {
+      transform: translateY(-1px);
+      opacity: 0.96;
+    }
 
-.book:hover{
-background-color:#f4f4f4;
-}
+    button.secondary {
+      background: linear-gradient(135deg, #ff85c1, #ff5ca8);
+    }
 
-.book-header{
-display:flex;
-align-items:center;
-gap:15px;
-}
+    .chapter-list {
+      display: grid;
+      gap: 18px;
+    }
 
-.book-cover{
-width:100px;
-height:auto;
-border-radius:6px;
-}
+    .chapter-card {
+      background: #fff;
+      border: 1px solid #ffd1e6;
+      border-radius: 18px;
+      padding: 18px;
+      box-shadow: 0 4px 14px rgba(255, 105, 180, 0.08);
+    }
 
-.chapter-list{
-display:none;
-margin-top:15px;
-}
+    .chapter-header {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
 
-.chapter{
-margin:15px 0;
-}
+    .chapter-title {
+      font-size: 1.15rem;
+      font-weight: bold;
+      color: #c21870;
+    }
 
-audio{
-width:100%;
-max-width:500px;
-display:block;
-margin-bottom:5px;
-}
+    .chapter-controls {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 12px;
+      margin-bottom: 12px;
+    }
 
-/* PLAY ALL BUTTON */
+    audio {
+      width: 100%;
+      margin-top: 8px;
+      margin-bottom: 10px;
+    }
 
-button{
-background:#e75480;
-color:white;
-border:none;
-padding:10px 18px;
-border-radius:6px;
-cursor:pointer;
-margin-top:10px;
-}
+    .progress-wrap {
+      margin-top: 8px;
+    }
 
-button:hover{
-background:#d9436f;
-}
+    .progress-label {
+      font-size: 0.9rem;
+      color: #777;
+      margin-bottom: 6px;
+    }
 
-a{
-text-decoration:none;
-color:#e75480;
-font-size:14px;
-}
+    .progress-bar {
+      width: 100%;
+      height: 10px;
+      background: #ffd8e8;
+      border-radius: 999px;
+      overflow: hidden;
+    }
 
-a:hover{
-text-decoration:underline;
-}
+    .progress-fill {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(135deg, #ff4fa3, #d63384);
+      border-radius: 999px;
+      transition: width 0.2s linear;
+    }
 
-/* MOBILE IMPROVEMENTS */
+    .footer-note {
+      text-align: center;
+      margin-top: 30px;
+      font-size: 0.9rem;
+      color: #888;
+    }
 
-@media (max-width:600px){
+    @media (max-width: 600px) {
+      body {
+        padding: 12px;
+      }
 
-body{
-padding:15px;
-}
+      .container {
+        padding: 16px;
+        border-radius: 16px;
+      }
 
-.book{
-padding:15px;
-}
+      h1 {
+        font-size: 1.6rem;
+      }
 
-.book-header{
-flex-direction:column;
-align-items:center;
-text-align:center;
-}
+      .chapter-header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
 
-.book-cover{
-width:140px;
-height:auto;
-}
+      .chapter-controls,
+      .top-controls {
+        flex-direction: column;
+        align-items: stretch;
+      }
 
-audio{
-max-width:100%;
-}
+      button {
+        width: 100%;
+      }
 
-}
+      .book-cover {
+        width: 180px;
+      }
+    }
+  </style>
 
-</style>
+  <script>
+    // PASSWORD PROTECTION
+    const password = "19.10.2025";
 
+    if (sessionStorage.getItem("authenticated") !== "true") {
+      const userPass = prompt("Enter password to access the audiobook:");
+      if (userPass === password) {
+        sessionStorage.setItem("authenticated", "true");
+      } else {
+        alert("Wrong password! Access denied.");
+        window.location.href = "https://www.google.com";
+      }
+    }
+  </script>
 </head>
-
 <body>
+  <div class="container">
+    <div class="hero">
+      <img src="book-cover.jpg" alt="Book Cover" class="book-cover" />
+      <h1>My Audiobook</h1>
+      <p class="subtitle">A private audiobook site made with love ❤️</p>
+    </div>
 
-<h1>For You ❤️</h1>
-<p>Stories I’m recording just for you.</p>
+    <div class="continue-box">
+      <p id="continueText">No saved progress yet.</p>
+      <button id="continueBtn" class="secondary" style="display: none;">
+        Continue Listening
+      </button>
+    </div>
 
-<div class="book" onclick="toggleChapters('book1')">
+    <div class="top-controls">
+      <button onclick="playAllChapters()">Play All Chapters</button>
+      <button class="secondary" onclick="pauseAllChapters()">Pause All</button>
+      <button class="secondary" onclick="resetProgress()">Reset Progress</button>
+    </div>
 
-<div class="book-header">
+    <div class="chapter-list">
 
-<img src="images/book1.jpg" class="book-cover">
+      <div class="chapter-card">
+        <div class="chapter-header">
+          <div class="chapter-title">Chapter 1</div>
+        </div>
+        <audio id="audio-1" controls preload="metadata" data-chapter="1">
+          <source src="chapter-1.mp3" type="audio/mpeg" />
+        </audio>
+        <div class="chapter-controls">
+          <button onclick="playChapter(1)">Play</button>
+          <button class="secondary" onclick="restartChapter(1)">Restart</button>
+          <button class="secondary" onclick="downloadChapter('chapter-1.mp3')">Download Chapter</button>
+        </div>
+        <div class="progress-wrap">
+          <div class="progress-label" id="progress-text-1">Progress: 0%</div>
+          <div class="progress-bar">
+            <div class="progress-fill" id="progress-fill-1"></div>
+          </div>
+        </div>
+      </div>
 
-<div>
-<h2>Audiobook One</h2>
-<p>A special story recorded just for you.</p>
-</div>
+      <div class="chapter-card">
+        <div class="chapter-header">
+          <div class="chapter-title">Chapter 2</div>
+        </div>
+        <audio id="audio-2" controls preload="metadata" data-chapter="2">
+          <source src="chapter-2.mp3" type="audio/mpeg" />
+        </audio>
+        <div class="chapter-controls">
+          <button onclick="playChapter(2)">Play</button>
+          <button class="secondary" onclick="restartChapter(2)">Restart</button>
+          <button class="secondary" onclick="downloadChapter('chapter-2.mp3')">Download Chapter</button>
+        </div>
+        <div class="progress-wrap">
+          <div class="progress-label" id="progress-text-2">Progress: 0%</div>
+          <div class="progress-bar">
+            <div class="progress-fill" id="progress-fill-2"></div>
+          </div>
+        </div>
+      </div>
 
-</div>
+      <div class="chapter-card">
+        <div class="chapter-header">
+          <div class="chapter-title">Chapter 3</div>
+        </div>
+        <audio id="audio-3" controls preload="metadata" data-chapter="3">
+          <source src="chapter-3.mp3" type="audio/mpeg" />
+        </audio>
+        <div class="chapter-controls">
+          <button onclick="playChapter(3)">Play</button>
+          <button class="secondary" onclick="restartChapter(3)">Restart</button>
+          <button class="secondary" onclick="downloadChapter('chapter-3.mp3')">Download Chapter</button>
+        </div>
+        <div class="progress-wrap">
+          <div class="progress-label" id="progress-text-3">Progress: 0%</div>
+          <div class="progress-bar">
+            <div class="progress-fill" id="progress-fill-3"></div>
+          </div>
+        </div>
+      </div>
 
-<button onclick="playAll()">▶ Play All Chapters</button>
+      <div class="chapter-card">
+        <div class="chapter-header">
+          <div class="chapter-title">Chapter 4</div>
+        </div>
+        <audio id="audio-4" controls preload="metadata" data-chapter="4">
+          <source src="chapter-4.mp3" type="audio/mpeg" />
+        </audio>
+        <div class="chapter-controls">
+          <button onclick="playChapter(4)">Play</button>
+          <button class="secondary" onclick="restartChapter(4)">Restart</button>
+          <button class="secondary" onclick="downloadChapter('chapter-4.mp3')">Download Chapter</button>
+        </div>
+        <div class="progress-wrap">
+          <div class="progress-label" id="progress-text-4">Progress: 0%</div>
+          <div class="progress-bar">
+            <div class="progress-fill" id="progress-fill-4"></div>
+          </div>
+        </div>
+      </div>
 
-<div class="chapter-list" id="book1">
+      <div class="chapter-card">
+        <div class="chapter-header">
+          <div class="chapter-title">Chapter 5</div>
+        </div>
+        <audio id="audio-5" controls preload="metadata" data-chapter="5">
+          <source src="chapter-5.mp3" type="audio/mpeg" />
+        </audio>
+        <div class="chapter-controls">
+          <button onclick="playChapter(5)">Play</button>
+          <button class="secondary" onclick="restartChapter(5)">Restart</button>
+          <button class="secondary" onclick="downloadChapter('chapter-5.mp3')">Download Chapter</button>
+        </div>
+        <div class="progress-wrap">
+          <div class="progress-label" id="progress-text-5">Progress: 0%</div>
+          <div class="progress-bar">
+            <div class="progress-fill" id="progress-fill-5"></div>
+          </div>
+        </div>
+      </div>
 
-<div class="chapter">
+      <div class="chapter-card">
+        <div class="chapter-header">
+          <div class="chapter-title">Chapter 6</div>
+        </div>
+        <audio id="audio-6" controls preload="metadata" data-chapter="6">
+          <source src="chapter-6.mp3" type="audio/mpeg" />
+        </audio>
+        <div class="chapter-controls">
+          <button onclick="playChapter(6)">Play</button>
+          <button class="secondary" onclick="restartChapter(6)">Restart</button>
+          <button class="secondary" onclick="downloadChapter('chapter-6.mp3')">Download Chapter</button>
+        </div>
+        <div class="progress-wrap">
+          <div class="progress-label" id="progress-text-6">Progress: 0%</div>
+          <div class="progress-bar">
+            <div class="progress-fill" id="progress-fill-6"></div>
+          </div>
+        </div>
+      </div>
 
-<h3>Chapter 1</h3>
+      <div class="chapter-card">
+        <div class="chapter-header">
+          <div class="chapter-title">Chapter 7</div>
+        </div>
+        <audio id="audio-7" controls preload="metadata" data-chapter="7">
+          <source src="chapter-7.mp3" type="audio/mpeg" />
+        </audio>
+        <div class="chapter-controls">
+          <button onclick="playChapter(7)">Play</button>
+          <button class="secondary" onclick="restartChapter(7)">Restart</button>
+          <button class="secondary" onclick="downloadChapter('chapter-7.mp3')">Download Chapter</button>
+        </div>
+        <div class="progress-wrap">
+          <div class="progress-label" id="progress-text-7">Progress: 0%</div>
+          <div class="progress-bar">
+            <div class="progress-fill" id="progress-fill-7"></div>
+          </div>
+        </div>
+      </div>
 
-<audio controls>
-<source src="audio/chapter-1.mp3" type="audio/mpeg">
-</audio>
+      <div class="chapter-card">
+        <div class="chapter-header">
+          <div class="chapter-title">Chapter 8</div>
+        </div>
+        <audio id="audio-8" controls preload="metadata" data-chapter="8">
+          <source src="chapter-8.mp3" type="audio/mpeg" />
+        </audio>
+        <div class="chapter-controls">
+          <button onclick="playChapter(8)">Play</button>
+          <button class="secondary" onclick="restartChapter(8)">Restart</button>
+          <button class="secondary" onclick="downloadChapter('chapter-8.mp3')">Download Chapter</button>
+        </div>
+        <div class="progress-wrap">
+          <div class="progress-label" id="progress-text-8">Progress: 0%</div>
+          <div class="progress-bar">
+            <div class="progress-fill" id="progress-fill-8"></div>
+          </div>
+        </div>
+      </div>
 
-<a href="audio/chapter-1.mp3" download>
-Download Chapter 1
-</a>
+      <div class="chapter-card">
+        <div class="chapter-header">
+          <div class="chapter-title">Chapter 9</div>
+        </div>
+        <audio id="audio-9" controls preload="metadata" data-chapter="9">
+          <source src="chapter-9.mp3" type="audio/mpeg" />
+        </audio>
+        <div class="chapter-controls">
+          <button onclick="playChapter(9)">Play</button>
+          <button class="secondary" onclick="restartChapter(9)">Restart</button>
+          <button class="secondary" onclick="downloadChapter('chapter-9.mp3')">Download Chapter</button>
+        </div>
+        <div class="progress-wrap">
+          <div class="progress-label" id="progress-text-9">Progress: 0%</div>
+          <div class="progress-bar">
+            <div class="progress-fill" id="progress-fill-9"></div>
+          </div>
+        </div>
+      </div>
 
-</div>
+      <div class="chapter-card">
+        <div class="chapter-header">
+          <div class="chapter-title">Chapter 10</div>
+        </div>
+        <audio id="audio-10" controls preload="metadata" data-chapter="10">
+          <source src="chapter-10.mp3" type="audio/mpeg" />
+        </audio>
+        <div class="chapter-controls">
+          <button onclick="playChapter(10)">Play</button>
+          <button class="secondary" onclick="restartChapter(10)">Restart</button>
+          <button class="secondary" onclick="downloadChapter('chapter-10.mp3')">Download Chapter</button>
+        </div>
+        <div class="progress-wrap">
+          <div class="progress-label" id="progress-text-10">Progress: 0%</div>
+          <div class="progress-bar">
+            <div class="progress-fill" id="progress-fill-10"></div>
+          </div>
+        </div>
+      </div>
 
-<div class="chapter">
+    </div>
 
-<h3>Chapter 2</h3>
+    <p class="footer-note">Private listening page • Mobile friendly • Saves your place automatically</p>
+  </div>
 
-<audio controls>
-<source src="audio/chapter-2.mp3" type="audio/mpeg">
-</audio>
+  <script>
+    const audios = document.querySelectorAll("audio");
+    let playAllMode = false;
+    let currentPlayAllIndex = 0;
 
-<a href="audio/chapter-2.mp3" download>
-Download Chapter 2
-</a>
+    function pauseAllChapters() {
+      audios.forEach(audio => audio.pause());
+      playAllMode = false;
+    }
 
-</div>
+    function playChapter(chapterNumber) {
+      pauseAllChapters();
+      const audio = document.getElementById(`audio-${chapterNumber}`);
+      if (audio) audio.play();
+    }
 
-</div>
+    function restartChapter(chapterNumber) {
+      const audio = document.getElementById(`audio-${chapterNumber}`);
+      if (audio) {
+        audio.currentTime = 0;
+        audio.play();
+      }
+    }
 
-</div>
+    function downloadChapter(filename) {
+      const link = document.createElement("a");
+      link.href = filename;
+      link.download = filename;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    }
 
-<script>
+    function playAllChapters() {
+      pauseAllChapters();
+      playAllMode = true;
+      currentPlayAllIndex = 0;
+      playNextChapter();
+    }
 
-function toggleChapters(bookId){
+    function playNextChapter() {
+      if (!playAllMode || currentPlayAllIndex >= audios.length) {
+        playAllMode = false;
+        return;
+      }
 
-const chapters=document.getElementById(bookId);
+      const audio = audios[currentPlayAllIndex];
+      audio.currentTime = 0;
+      audio.play();
+    }
 
-if(chapters.style.display==="block"){
-chapters.style.display="none";
-}else{
-chapters.style.display="block";
-}
+    function resetProgress() {
+      localStorage.removeItem("audiobookProgress");
+      audios.forEach(audio => {
+        const chapter = audio.dataset.chapter;
+        updateProgressBar(chapter, 0);
+        audio.currentTime = 0;
+      });
+      updateContinueBox();
+      alert("Progress has been reset.");
+    }
 
-}
+    function saveProgress(chapter, currentTime, duration) {
+      const progressData = JSON.parse(localStorage.getItem("audiobookProgress")) || {};
+      progressData[chapter] = {
+        currentTime,
+        duration
+      };
+      localStorage.setItem("audiobookProgress", JSON.stringify(progressData));
+    }
 
-/* PLAY ALL CHAPTERS */
+    function loadProgress(chapter) {
+      const progressData = JSON.parse(localStorage.getItem("audiobookProgress")) || {};
+      return progressData[chapter] || null;
+    }
 
-function playAll(){
+    function updateProgressBar(chapter, percent) {
+      const fill = document.getElementById(`progress-fill-${chapter}`);
+      const text = document.getElementById(`progress-text-${chapter}`);
+      if (fill) fill.style.width = `${percent}%`;
+      if (text) text.textContent = `Progress: ${Math.floor(percent)}%`;
+    }
 
-const audios=document.querySelectorAll("audio");
+    function updateContinueBox() {
+      const continueText = document.getElementById("continueText");
+      const continueBtn = document.getElementById("continueBtn");
+      const progressData = JSON.parse(localStorage.getItem("audiobookProgress")) || {};
 
-let current=0;
+      let bestChapter = null;
+      let bestTime = 0;
 
-audios[current].play();
+      Object.keys(progressData).forEach(chapter => {
+        const item = progressData[chapter];
+        if (item.currentTime > 0 && item.currentTime < item.duration) {
+          if (!bestChapter || Number(chapter) > Number(bestChapter)) {
+            bestChapter = chapter;
+            bestTime = item.currentTime;
+          }
+        }
+      });
 
-audios.forEach((audio,index)=>{
+      if (bestChapter) {
+        continueText.textContent = `Continue from Chapter ${bestChapter}`;
+        continueBtn.style.display = "inline-block";
+        continueBtn.onclick = () => {
+          pauseAllChapters();
+          const audio = document.getElementById(`audio-${bestChapter}`);
+          if (audio) {
+            audio.currentTime = bestTime;
+            audio.play();
+          }
+        };
+      } else {
+        continueText.textContent = "No saved progress yet.";
+        continueBtn.style.display = "none";
+      }
+    }
 
-audio.onended=function(){
+    audios.forEach((audio) => {
+      const chapter = audio.dataset.chapter;
 
-if(index+1<audios.length){
+      audio.addEventListener("loadedmetadata", () => {
+        const saved = loadProgress(chapter);
+        if (saved && saved.duration) {
+          const percent = (saved.currentTime / saved.duration) * 100;
+          updateProgressBar(chapter, percent);
+        }
+      });
 
-audios[index+1].play();
+      audio.addEventListener("timeupdate", () => {
+        if (audio.duration) {
+          const percent = (audio.currentTime / audio.duration) * 100;
+          updateProgressBar(chapter, percent);
+          saveProgress(chapter, audio.currentTime, audio.duration);
+          updateContinueBox();
+        }
+      });
 
-}
+      audio.addEventListener("play", () => {
+        audios.forEach(otherAudio => {
+          if (otherAudio !== audio) otherAudio.pause();
+        });
+      });
 
-}
+      audio.addEventListener("ended", () => {
+        saveProgress(chapter, audio.duration, audio.duration);
+        updateProgressBar(chapter, 100);
+        updateContinueBox();
 
-});
+        if (playAllMode) {
+          currentPlayAllIndex++;
+          playNextChapter();
+        }
+      });
+    });
 
-}
-
-/* CONTINUE LISTENING */
-
-document.querySelectorAll("audio").forEach((audio,index)=>{
-
-const savedTime=localStorage.getItem("audio-"+index);
-
-if(savedTime){
-audio.currentTime=savedTime;
-}
-
-audio.addEventListener("timeupdate",()=>{
-
-localStorage.setItem("audio-"+index,audio.currentTime);
-
-});
-
-});
-
-</script>
-
+    updateContinueBox();
+  </script>
 </body>
 </html>
