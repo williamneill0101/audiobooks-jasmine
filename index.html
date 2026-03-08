@@ -1,156 +1,209 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>For You ❤️</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<title>For You ❤️</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <script>
-    const password = "19.10.2025";
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
-    if (sessionStorage.getItem("authenticated") !== "true") {
-      const userPass = prompt("Enter password to access the site:");
-      if (userPass === password) {
-        sessionStorage.setItem("authenticated", "true");
-      } else {
-        alert("Wrong password! Access denied.");
-        window.location.href = "https://www.google.com";
-      }
-    }
-  </script>
+<script>
+const password = "19.10.2025";
 
-  <style>
+if (sessionStorage.getItem("authenticated") !== "true") {
+  const userPass = prompt("Enter password to access the site:");
+  if (userPass === password) {
+    sessionStorage.setItem("authenticated", "true");
+  } else {
+    alert("Wrong password! Access denied.");
+    window.location.href = "https://www.google.com";
+  }
+}
+</script>
 
-    body { 
-      font-family: Arial, sans-serif; 
-      padding: 20px; 
-      background: #f7f7f7; 
-      color: #333; 
-      text-align: center;
-    }
+<style>
 
-    h1 { 
-      margin-bottom: 10px; 
-    }
+body{
+font-family:'Poppins',sans-serif;
+padding:20px;
+background:linear-gradient(135deg,#f5f7fa,#e4e8f0);
+color:#333;
+text-align:center;
+}
 
-    p {
-      margin-bottom: 30px;
-    }
+h1{
+margin-bottom:10px;
+}
 
-    .book { 
-      margin: 20px auto;
-      padding: 20px; 
-      background: #fff; 
-      border-radius: 10px; 
-      box-shadow: 0 0 5px #ccc; 
-      cursor: pointer;
-      max-width: 600px;
-      text-align: left;
-    }
+p{
+margin-bottom:30px;
+}
 
-    .book:hover { 
-      background-color: #f0f0f0; 
-    }
+.book{
+margin:20px auto;
+padding:20px;
+background:#fff;
+border-radius:10px;
+box-shadow:0 0 8px rgba(0,0,0,0.1);
+cursor:pointer;
+max-width:600px;
+text-align:left;
+}
 
-    .book-header {
-      display: flex;
-      align-items: center;
-      gap: 15px;
-    }
+.book:hover{
+background-color:#f4f4f4;
+}
 
-    .book-cover {
-      width: 80px;
-      height: 120px;
-      object-fit: cover;
-      border-radius: 6px;
-    }
+.book-header{
+display:flex;
+align-items:center;
+gap:15px;
+}
 
-    .chapter-list { 
-      display: none; 
-      margin-top: 15px; 
-    }
+.book-cover{
+width:100px;
+height:auto;
+border-radius:6px;
+}
 
-    .chapter { 
-      margin: 15px 0; 
-    }
+.chapter-list{
+display:none;
+margin-top:15px;
+}
 
-    audio { 
-      width: 100%; 
-      max-width: 500px;
-      display: block;
-      margin-bottom: 5px;
-    }
+.chapter{
+margin:15px 0;
+}
 
-    a { 
-      text-decoration: none; 
-      color: #007BFF; 
-      font-size: 14px;
-    }
+audio{
+width:100%;
+max-width:500px;
+display:block;
+margin-bottom:5px;
+}
 
-    a:hover { 
-      text-decoration: underline; 
-    }
+a{
+text-decoration:none;
+color:#007BFF;
+font-size:14px;
+}
 
-  </style>
+a:hover{
+text-decoration:underline;
+}
+
+/* MOBILE IMPROVEMENTS */
+
+@media (max-width:600px){
+
+body{
+padding:15px;
+}
+
+.book{
+padding:15px;
+}
+
+.book-header{
+flex-direction:column;
+align-items:center;
+text-align:center;
+}
+
+.book-cover{
+width:140px;
+height:auto;
+}
+
+audio{
+max-width:100%;
+}
+
+}
+
+</style>
 </head>
 
 <body>
 
-  <h1>For You ❤️</h1>
-  <p>Stories I’m recording just for you.</p>
+<h1>For You ❤️</h1>
+<p>Stories I’m recording just for you.</p>
 
-  <div class="book" onclick="toggleChapters('book1')">
+<div class="book" onclick="toggleChapters('book1')">
 
-    <div class="book-header">
+<div class="book-header">
 
-      <img src="images/book1.jpg" class="book-cover">
+<img src="images/book1.jpg" class="book-cover">
 
-      <div>
-        <h2>Audiobook One</h2>
-        <p>A special story recorded just for you.</p>
-      </div>
+<div>
+<h2>Audiobook One</h2>
+<p>A special story recorded just for you.</p>
+</div>
 
-    </div>
+</div>
 
-    <div class="chapter-list" id="book1">
+<div class="chapter-list" id="book1">
 
-      <div class="chapter">
-        <h3>Chapter 1</h3>
+<div class="chapter">
+<h3>Chapter 1</h3>
 
-        <audio controls>
-          <source src="audio/chapter-1.mp3" type="audio/mpeg">
-        </audio>
+<audio controls>
+<source src="audio/chapter-1.mp3" type="audio/mpeg">
+</audio>
 
-        <a href="audio/chapter-1.mp3" download>Download Chapter 1</a>
-      </div>
+<a href="audio/chapter-1.mp3" download>Download Chapter 1</a>
 
-      <div class="chapter">
-        <h3>Chapter 2</h3>
+</div>
 
-        <audio controls>
-          <source src="audio/chapter-2.mp3" type="audio/mpeg">
-        </audio>
+<div class="chapter">
 
-        <a href="audio/chapter-2.mp3" download>Download Chapter 2</a>
-      </div>
+<h3>Chapter 2</h3>
 
-    </div>
+<audio controls>
+<source src="audio/chapter-2.mp3" type="audio/mpeg">
+</audio>
 
-  </div>
+<a href="audio/chapter-2.mp3" download>Download Chapter 2</a>
 
-  <script>
-    function toggleChapters(bookId) {
+</div>
 
-      const chapters = document.getElementById(bookId);
+</div>
 
-      if (chapters.style.display === "block") {
-        chapters.style.display = "none";
-      } else {
-        chapters.style.display = "block";
-      }
+</div>
 
-    }
-  </script>
+<script>
+
+function toggleChapters(bookId){
+
+const chapters=document.getElementById(bookId);
+
+if(chapters.style.display==="block"){
+chapters.style.display="none";
+}else{
+chapters.style.display="block";
+}
+
+}
+
+/* CONTINUE LISTENING FEATURE */
+
+document.querySelectorAll("audio").forEach((audio, index) => {
+
+const savedTime=localStorage.getItem("audio-"+index);
+
+if(savedTime){
+audio.currentTime=savedTime;
+}
+
+audio.addEventListener("timeupdate",()=>{
+
+localStorage.setItem("audio-"+index,audio.currentTime);
+
+});
+
+});
+
+</script>
 
 </body>
 </html>
