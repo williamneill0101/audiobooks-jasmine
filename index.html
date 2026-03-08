@@ -21,16 +21,75 @@
   </script>
 
   <style>
-    body { font-family: Arial, sans-serif; padding: 20px; background: #f7f7f7; color: #333; }
-    h1 { text-align: center; margin-bottom: 30px; }
-    .book { margin: 20px 0; padding: 15px; background: #fff; border-radius: 10px; box-shadow: 0 0 5px #ccc; cursor: pointer; }
-    .book h2 { margin: 0; }
-    .chapter-list { display: none; margin-top: 10px; }
-    .chapter { margin: 10px 0; }
-    audio { width: 100%; max-width: 600px; display: block; margin-bottom: 5px; }
-    a { text-decoration: none; color: #007BFF; }
-    a:hover { text-decoration: underline; }
-    .book:hover { background-color: #f0f0f0; }
+    body { 
+      font-family: Arial, sans-serif; 
+      padding: 20px; 
+      background: #f7f7f7; 
+      color: #333; 
+    }
+
+    h1 { 
+      text-align: center; 
+      margin-bottom: 30px; 
+    }
+
+    .book { 
+      margin: 20px 0; 
+      padding: 15px; 
+      background: #fff; 
+      border-radius: 10px; 
+      box-shadow: 0 0 5px #ccc; 
+      cursor: pointer; 
+    }
+
+    .book:hover { 
+      background-color: #f0f0f0; 
+    }
+
+    .book h2 { 
+      margin: 0; 
+    }
+
+    .chapter-list { 
+      display: none; 
+      margin-top: 10px; 
+    }
+
+    .chapter { 
+      margin: 10px 0; 
+    }
+
+    audio { 
+      width: 100%; 
+      max-width: 600px; 
+      display: block; 
+      margin-bottom: 5px; 
+    }
+
+    a { 
+      text-decoration: none; 
+      color: #007BFF; 
+    }
+
+    a:hover { 
+      text-decoration: underline; 
+    }
+
+    /* NEW BOOK CARD STYLE */
+
+    .book-header {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .book-cover {
+      width: 80px;
+      height: 120px;
+      object-fit: cover;
+      border-radius: 6px;
+    }
+
   </style>
 </head>
 <body>
@@ -38,10 +97,18 @@
   <h1>For You ❤️</h1>
   <p>Stories I’m recording just for you.</p>
 
-  <!-- The Explorer - Katherine Rundell -->
+  <!-- Audiobook -->
   <div class="book" onclick="toggleChapters('book1')">
-    <h2>The Explorer - Katherine Rundell</h2>
-    <p>A special story recorded just for you.</p>
+
+    <div class="book-header">
+      <img src="images/book1.jpg" class="book-cover">
+
+      <div>
+        <h2>Audiobook One</h2>
+        <p>A special story recorded just for you.</p>
+      </div>
+    </div>
+
     <div class="chapter-list" id="book1">
 
       <div class="chapter">
@@ -78,4 +145,3 @@
 
 </body>
 </html>
-
