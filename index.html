@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
 <meta charset="UTF-8">
 <title>For You ❤️</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,13 +12,16 @@
 const password = "19.10.2025";
 
 if (sessionStorage.getItem("authenticated") !== "true") {
-  const userPass = prompt("Enter password to access the site:");
-  if (userPass === password) {
-    sessionStorage.setItem("authenticated", "true");
-  } else {
-    alert("Wrong password! Access denied.");
-    window.location.href = "https://www.google.com";
-  }
+
+const userPass = prompt("Enter password to access the site:");
+
+if (userPass === password) {
+sessionStorage.setItem("authenticated","true");
+} else {
+alert("Wrong password! Access denied.");
+window.location.href="https://www.google.com";
+}
+
 }
 </script>
 
@@ -82,9 +86,25 @@ display:block;
 margin-bottom:5px;
 }
 
+/* PLAY ALL BUTTON */
+
+button{
+background:#e75480;
+color:white;
+border:none;
+padding:10px 18px;
+border-radius:6px;
+cursor:pointer;
+margin-top:10px;
+}
+
+button:hover{
+background:#d9436f;
+}
+
 a{
 text-decoration:none;
-color:#007BFF;
+color:#e75480;
 font-size:14px;
 }
 
@@ -122,6 +142,7 @@ max-width:100%;
 }
 
 </style>
+
 </head>
 
 <body>
@@ -142,16 +163,21 @@ max-width:100%;
 
 </div>
 
+<button onclick="playAll()">▶ Play All Chapters</button>
+
 <div class="chapter-list" id="book1">
 
 <div class="chapter">
+
 <h3>Chapter 1</h3>
 
 <audio controls>
 <source src="audio/chapter-1.mp3" type="audio/mpeg">
 </audio>
 
-<a href="audio/chapter-1.mp3" download>Download Chapter 1</a>
+<a href="audio/chapter-1.mp3" download>
+Download Chapter 1
+</a>
 
 </div>
 
@@ -163,7 +189,9 @@ max-width:100%;
 <source src="audio/chapter-2.mp3" type="audio/mpeg">
 </audio>
 
-<a href="audio/chapter-2.mp3" download>Download Chapter 2</a>
+<a href="audio/chapter-2.mp3" download>
+Download Chapter 2
+</a>
 
 </div>
 
@@ -185,9 +213,35 @@ chapters.style.display="block";
 
 }
 
-/* CONTINUE LISTENING FEATURE */
+/* PLAY ALL CHAPTERS */
 
-document.querySelectorAll("audio").forEach((audio, index) => {
+function playAll(){
+
+const audios=document.querySelectorAll("audio");
+
+let current=0;
+
+audios[current].play();
+
+audios.forEach((audio,index)=>{
+
+audio.onended=function(){
+
+if(index+1<audios.length){
+
+audios[index+1].play();
+
+}
+
+}
+
+});
+
+}
+
+/* CONTINUE LISTENING */
+
+document.querySelectorAll("audio").forEach((audio,index)=>{
 
 const savedTime=localStorage.getItem("audio-"+index);
 
