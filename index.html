@@ -606,7 +606,7 @@
         </div>
       </div>
 
-      <!-- BOOK 2 TEMPLATE -->
+<!-- BOOK 2 TEMPLATE -->
       <div class="book-card">
         <button class="book-toggle" onclick="toggleBook('book2')">
           <div class="book-toggle-left">
@@ -627,4 +627,160 @@
 
           <div class="chapter-list">
             <div class="chapter-card">
-              <div class="chapter-title"
+              <div class="chapter-title">Coming soon</div>
+              <p style="color:#666;">Add your second book chapters here when ready.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <p class="footer-note">Private listening page • Mobile friendly • Pink themed • Easy to use</p>
+
+    <div style="text-align:center">
+      <div class="relationship-counter">
+        <p class="counter-title">
+          Time We've Been Together <span class="heart-pulse">❤️</span>
+        </p>
+        <p id="daysTogether" class="counter-number"></p>
+        <p id="hoursTogether" class="counter-sub"></p>
+        <p id="minutesTogether" class="counter-sub"></p>
+        <p id="secondsTogether" class="counter-sub"></p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const audios = document.querySelectorAll("audio");
+    let playAllMode = false;
+    let currentBookAudios = [];
+    let currentPlayAllIndex = 0;
+
+    function toggleBook(bookId) {
+      const content = document.getElementById(bookId);
+      const icon = document.getElementById(`icon-${bookId}`);
+
+      if (content.classList.contains("open")) {
+        content.classList.remove("open");
+        icon.textContent = "+";
+      } else {
+        content.classList.add("open");
+        icon.textContent = "−";
+      }
+    }
+
+    function pauseAllAudio() {
+      audios.forEach(audio => audio.pause());
+      playAllMode = false;
+      currentBookAudios = [];
+      currentPlayAllIndex = 0;
+    }
+
+    function pauseAllInBook(bookId) {
+      const bookAudios = document.querySelectorAll(`audio[data-book="${bookId}"]`);
+      bookAudios.forEach(audio => audio.pause());
+      playAllMode = false;
+      currentBookAudios = [];
+      currentPlayAllIndex = 0;
+    }
+
+    function playChapter(chapterNumber) {
+      pauseAllAudio();
+      const audio = document.getElementById(`audio-${chapterNumber}`);
+      if (audio) audio.play();
+    }
+
+    function restartChapter(chapterNumber) {
+      const audio = document.getElementById(`audio-${chapterNumber}`);
+      if (audio) {
+        pauseAllAudio();
+        audio.currentTime = 0;
+        audio.play();
+      }
+    }
+
+    function downloadChapter(filename) {
+      const link = document.createElement("a");
+      link.href = filename;
+      link.download = filename.split("/").pop();
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    }
+
+    function playAllInBook(bookId) {
+      pauseAllAudio();
+      currentBookAudios = Array.from(document.querySelectorAll(`audio[data-book="${bookId}"]`));
+
+      if (currentBookAudios.length === 0) return;
+
+      playAllMode = true;
+      currentPlayAllIndex = 0;
+      currentBookAudios[0].play();
+    }
+
+    audios.forEach(audio => {
+      audio.addEventListener("timeupdate", () => {
+        const chapter = audio.dataset.chapter;
+        if (!chapter || !audio.duration) return;
+
+        const progress = (audio.currentTime / audio.duration) * 100;
+        const progressFill = document.getElementById(`progress-fill-${chapter}`);
+        const progressText = document.getElementById(`progress-text-${chapter}`);
+
+        if (progressFill) progressFill.style.width = `${progress}%`;
+        if (progressText) progressText.textContent = `Progress: ${Math.floor(progress)}%`;
+      });
+
+      audio.addEventListener("ended", () => {
+        if (playAllMode && currentBookAudios.length > 0) {
+          currentPlayAllIndex++;
+          if (currentPlayAllIndex < currentBookAudios.length) {
+            currentBookAudios[currentPlayAllIndex].play();
+          } else {
+            playAllMode = false;
+            currentBookAudios = [];
+            currentPlayAllIndex = 0;
+          }
+        }
+      });
+    });
+
+    const startDate = new Date(2025, 9, 19, 0, 0, 0);
+
+    function updateRelationshipCounter() {
+      const now = new Date();
+      const diff = now - startDate;
+
+      const daysEl = document.getElementById("daysTogether");
+      const hoursEl = document.getElementById("hoursTogether");
+      const minutesEl = document.getElementById("minutesTogether");
+      const secondsEl = document.getElementById("secondsTogether");
+
+      if (!daysEl || !hoursEl || !minutesEl || !secondsEl) return;
+
+      if (diff < 0) {
+        daysEl.textContent = "0 days";
+        hoursEl.textContent = "0 hours";
+        minutesEl.textContent = "0 minutes";
+        secondsEl.textContent = "0 seconds";
+        return;
+      }
+
+      const totalSeconds = Math.floor(diff / 1000);
+      const days = Math.floor(totalSeconds / 86400);
+      const hours = Math.floor((totalSeconds % 86400) / 3600);
+      const minutes = Math.floor((totalSeconds % 3600) / 60);
+      const seconds = totalSeconds % 60;
+
+      daysEl.textContent = days + " days";
+      hoursEl.textContent = hours + " hours";
+      minutesEl.textContent = minutes + " minutes";
+      secondsEl.textContent = seconds + " seconds";
+    }
+
+    updateRelationshipCounter();
+    setInterval(updateRelationshipCounter, 1000);
+  </script>
+</body>
+</html>
