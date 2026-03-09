@@ -18,6 +18,70 @@
       color: #333;
       min-height: 100vh;
       padding: 20px;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    /* Floating hearts background */
+    .hearts {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      overflow: hidden;
+      z-index: 0;
+    }
+
+    .heart {
+      position: absolute;
+      bottom: -50px;
+      color: rgba(255, 105, 180, 0.25);
+      font-size: 20px;
+      animation: floatUp linear infinite;
+    }
+
+    .heart:nth-child(1) { left: 10%; animation-duration: 10s; font-size: 20px; }
+    .heart:nth-child(2) { left: 20%; animation-duration: 14s; font-size: 28px; }
+    .heart:nth-child(3) { left: 35%; animation-duration: 12s; font-size: 18px; }
+    .heart:nth-child(4) { left: 50%; animation-duration: 16s; font-size: 24px; }
+    .heart:nth-child(5) { left: 65%; animation-duration: 11s; font-size: 22px; }
+    .heart:nth-child(6) { left: 80%; animation-duration: 15s; font-size: 30px; }
+    .heart:nth-child(7) { left: 90%; animation-duration: 13s; font-size: 20px; }
+
+    @keyframes floatUp {
+      0% {
+        transform: translateY(0) scale(1);
+        opacity: 0;
+      }
+      10% {
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-120vh) scale(1.3);
+        opacity: 0;
+      }
+    }
+
+    /* Fade-in animation */
+    .fade-in {
+      animation: fadeInUp 1.2s ease both;
+    }
+
+    .fade-delay-1 {
+      animation-delay: 0.2s;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     .container {
@@ -27,6 +91,8 @@
       border-radius: 22px;
       padding: 28px;
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      position: relative;
+      z-index: 1;
     }
 
     .hero {
@@ -213,6 +279,45 @@
       color: #888;
     }
 
+    .relationship-counter {
+      text-align: center;
+      margin-top: 25px;
+      padding: 10px 18px;
+      border-radius: 12px;
+      background: #fff;
+      display: inline-block;
+      box-shadow: 0 3px 8px rgba(0, 0, 0, 0.08);
+    }
+
+    .counter-title {
+      font-size: 14px;
+      color: #d63384;
+      margin: 0;
+    }
+
+    .counter-number {
+      font-size: 18px;
+      font-weight: bold;
+      margin-top: 4px;
+    }
+
+    .counter-sub {
+      font-size: 14px;
+      color: #666;
+      margin-top: 4px;
+    }
+
+    .heart-pulse {
+      display: inline-block;
+      animation: pulse 1.6s infinite;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.2); }
+      100% { transform: scale(1); }
+    }
+
     @media (max-width: 700px) {
       body {
         padding: 12px;
@@ -271,7 +376,17 @@
   </script>
 </head>
 <body>
-  <div class="container">
+  <div class="hearts">
+    <div class="heart">❤️</div>
+    <div class="heart">❤️</div>
+    <div class="heart">❤️</div>
+    <div class="heart">❤️</div>
+    <div class="heart">❤️</div>
+    <div class="heart">❤️</div>
+    <div class="heart">❤️</div>
+  </div>
+
+  <div class="container fade-in fade-delay-1">
     <div class="hero">
       <h1>For You ❤️</h1>
       <p>Stories I’m recording just for you.</p>
@@ -512,165 +627,4 @@
 
           <div class="chapter-list">
             <div class="chapter-card">
-              <div class="chapter-title">Coming soon</div>
-              <p style="color:#666;">Add your second book chapters here when ready.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <p class="footer-note">Private listening page • Mobile friendly • Pink themed • Easy to use</p>
-  </div>
-
-  <script>
-    const audios = document.querySelectorAll("audio");
-    let playAllMode = false;
-    let currentBookAudios = [];
-    let currentPlayAllIndex = 0;
-
-    function toggleBook(bookId) {
-      const content = document.getElementById(bookId);
-      const icon = document.getElementById(`icon-${bookId}`);
-
-      if (content.classList.contains("open")) {
-        content.classList.remove("open");
-        icon.textContent = "+";
-      } else {
-        content.classList.add("open");
-        icon.textContent = "−";
-      }
-    }
-
-    function pauseAllAudio() {
-      audios.forEach(audio => audio.pause());
-      playAllMode = false;
-      currentBookAudios = [];
-    }
-
-    function pauseAllInBook(bookId) {
-      const bookAudios = document.querySelectorAll(`audio[data-book="${bookId}"]`);
-      bookAudios.forEach(audio => audio.pause());
-      playAllMode = false;
-      currentBookAudios = [];
-    }
-
-    function playChapter(chapterNumber) {
-      pauseAllAudio();
-      const audio = document.getElementById(`audio-${chapterNumber}`);
-      if (audio) audio.play();
-    }
-
-    function restartChapter(chapterNumber) {
-      const audio = document.getElementById(`audio-${chapterNumber}`);
-      if (audio) {
-        pauseAllAudio();
-        audio.currentTime = 0;
-        audio.play();
-      }
-    }
-
-    function downloadChapter(filename) {
-      const link = document.createElement("a");
-      link.href = filename;
-      link.download = filename.split("/").pop();
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-    }
-
-    function playAllInBook(bookId) {
-      pauseAllAudio();
-      currentBookAudios = Array.from(document.querySelectorAll(`audio[data-book="${bookId}"]`));
-
-      currentBookAudios = currentBookAudios.filter(audio => {
-        const source = audio.querySelector("source");
-        return source && source.getAttribute("src");
-      });
-
-      if (!currentBookAudios.length) return;
-
-      playAllMode = true;
-      currentPlayAllIndex = 0;
-      playNextInBook();
-    }
-
-    function playNextInBook() {
-      if (!playAllMode || currentPlayAllIndex >= currentBookAudios.length) {
-        playAllMode = false;
-        return;
-      }
-
-      const audio = currentBookAudios[currentPlayAllIndex];
-      audio.currentTime = 0;
-      audio.play().catch(() => {});
-    }
-
-    function saveProgress(chapter, currentTime, duration) {
-      const progressData = JSON.parse(localStorage.getItem("audiobookProgress")) || {};
-      progressData[chapter] = {
-        currentTime,
-        duration
-      };
-      localStorage.setItem("audiobookProgress", JSON.stringify(progressData));
-    }
-
-    function loadProgress(chapter) {
-      const progressData = JSON.parse(localStorage.getItem("audiobookProgress")) || {};
-      return progressData[chapter] || null;
-    }
-
-    function updateProgressBar(chapter, percent) {
-      const fill = document.getElementById(`progress-fill-${chapter}`);
-      const text = document.getElementById(`progress-text-${chapter}`);
-
-      if (fill) fill.style.width = `${percent}%`;
-      if (text) text.textContent = `Progress: ${Math.floor(percent)}%`;
-    }
-
-    audios.forEach((audio) => {
-      const chapter = audio.dataset.chapter;
-
-      audio.addEventListener("loadedmetadata", () => {
-        const saved = loadProgress(chapter);
-        if (saved && saved.duration && audio.duration) {
-          const safeTime = Math.min(saved.currentTime, audio.duration);
-          audio.currentTime = safeTime;
-          const percent = (safeTime / audio.duration) * 100;
-          updateProgressBar(chapter, percent);
-        }
-      });
-
-      audio.addEventListener("timeupdate", () => {
-        if (audio.duration) {
-          const percent = (audio.currentTime / audio.duration) * 100;
-          updateProgressBar(chapter, percent);
-          saveProgress(chapter, audio.currentTime, audio.duration);
-        }
-      });
-
-      audio.addEventListener("play", () => {
-        audios.forEach(otherAudio => {
-          if (otherAudio !== audio) otherAudio.pause();
-        });
-      });
-
-      audio.addEventListener("ended", () => {
-        if (audio.duration) {
-          saveProgress(chapter, audio.duration, audio.duration);
-          updateProgressBar(chapter, 100);
-        }
-
-        if (playAllMode) {
-          currentPlayAllIndex++;
-          playNextInBook();
-        }
-      });
-
-      audio.addEventListener("error", () => {
-        console.log(`Could not load audio for chapter ${chapter}`);
-      });
-    });
-  </script>
-</body>
-</html>
+              <div class="chapter-title"
