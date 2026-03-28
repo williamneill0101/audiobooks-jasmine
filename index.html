@@ -393,219 +393,619 @@
     </div>
 
     <div class="book-list">
-      <!-- BOOK 1 -->
-      <div class="book-card">
-        <button class="book-toggle" onclick="toggleBook('book1')">
-          <div class="book-toggle-left">
-            <img src="images/book1.jpg" alt="Audiobook One Cover" class="book-thumb">
-            <div>
-              <h2>Audiobook One</h2>
-              <p>A special story recorded just for you.</p>
-            </div>
-          </div>
-          <span class="toggle-icon" id="icon-book1">+</span>
-        </button>
+   <!-- BOOK 1 -->
+<div class="book-card">
+  <button class="book-toggle" onclick="toggleBook('book1')">
+    <div class="book-toggle-left">
+      <img src="images/book1.jpg" alt="Audiobook One Cover" class="book-thumb">
+      <div>
+        <h2>Audiobook One</h2>
+        <p>A special story recorded just for you.</p>
+      </div>
+    </div>
+    <span class="toggle-icon" id="icon-book1">+</span>
+  </button>
 
-        <div class="book-content" id="book1">
-          <div class="book-controls">
-            <button class="action-btn" onclick="playAllInBook('book1')">Play All Chapters</button>
-            <button class="action-btn secondary" onclick="pauseAllInBook('book1')">Pause All</button>
-          </div>
+  <div class="book-content" id="book1">
+    <div class="book-controls">
+      <button class="action-btn" onclick="playAllInBook('book1')">Play All Chapters</button>
+      <button class="action-btn secondary" onclick="pauseAllInBook('book1')">Pause All</button>
+    </div>
 
-          <div class="chapter-list">
-            <div class="chapter-card">
-              <div class="chapter-title">Chapter 1</div>
-              <audio id="audio-1" controls preload="metadata" data-chapter="1" data-book="book1">
-                <source src="audio/chapter-1.mp3" type="audio/mpeg" />
-                Your browser does not support the audio element.
-              </audio>
-              <div class="chapter-controls">
-                <button class="action-btn" onclick="playChapter(1)">Play</button>
-                <button class="action-btn secondary" onclick="restartChapter(1)">Restart</button>
-                <button class="action-btn secondary" onclick="downloadChapter('audio/chapter-1.mp3')">Download Chapter</button>
-              </div>
-              <div class="progress-wrap">
-                <div class="progress-label" id="progress-text-1">Progress: 0%</div>
-                <div class="progress-bar">
-                  <div class="progress-fill" id="progress-fill-1"></div>
-                </div>
-              </div>
-            </div>
+    <div class="chapter-list">
 
-            <div class="chapter-card">
-              <div class="chapter-title">Chapter 2</div>
-              <audio id="audio-2" controls preload="metadata" data-chapter="2" data-book="book1">
-                <source src="audio/chapter-2.mp3" type="audio/mpeg" />
-                Your browser does not support the audio element.
-              </audio>
-              <div class="chapter-controls">
-                <button class="action-btn" onclick="playChapter(2)">Play</button>
-                <button class="action-btn secondary" onclick="restartChapter(2)">Restart</button>
-                <button class="action-btn secondary" onclick="downloadChapter('audio/chapter-2.mp3')">Download Chapter</button>
-              </div>
-              <div class="progress-wrap">
-                <div class="progress-label" id="progress-text-2">Progress: 0%</div>
-                <div class="progress-bar">
-                  <div class="progress-fill" id="progress-fill-2"></div>
-                </div>
-              </div>
-            </div>
-
-            <div class="chapter-card">
-              <div class="chapter-title">Chapter 3</div>
-              <audio id="audio-3" controls preload="metadata" data-chapter="3" data-book="book1">
-                <source src="audio/chapter-3.mp3" type="audio/mpeg" />
-                Your browser does not support the audio element.
-              </audio>
-              <div class="chapter-controls">
-                <button class="action-btn" onclick="playChapter(3)">Play</button>
-                <button class="action-btn secondary" onclick="restartChapter(3)">Restart</button>
-                <button class="action-btn secondary" onclick="downloadChapter('audio/chapter-3.mp3')">Download Chapter</button>
-              </div>
-              <div class="progress-wrap">
-                <div class="progress-label" id="progress-text-3">Progress: 0%</div>
-                <div class="progress-bar">
-                  <div class="progress-fill" id="progress-fill-3"></div>
-                </div>
-              </div>
-            </div>
-
-            <div class="chapter-card">
-              <div class="chapter-title">Chapter 4</div>
-              <audio id="audio-4" controls preload="metadata" data-chapter="4" data-book="book1">
-                <source src="audio/chapter-4.mp3" type="audio/mpeg" />
-                Your browser does not support the audio element.
-              </audio>
-              <div class="chapter-controls">
-                <button class="action-btn" onclick="playChapter(4)">Play</button>
-                <button class="action-btn secondary" onclick="restartChapter(4)">Restart</button>
-                <button class="action-btn secondary" onclick="downloadChapter('audio/chapter-4.mp3')">Download Chapter</button>
-              </div>
-              <div class="progress-wrap">
-                <div class="progress-label" id="progress-text-4">Progress: 0%</div>
-                <div class="progress-bar">
-                  <div class="progress-fill" id="progress-fill-4"></div>
-                </div>
-              </div>
-            </div>
-
-            <div class="chapter-card">
-              <div class="chapter-title">Chapter 5</div>
-              <audio id="audio-5" controls preload="metadata" data-chapter="5" data-book="book1">
-                <source src="audio/chapter-5.mp3" type="audio/mpeg" />
-                Your browser does not support the audio element.
-              </audio>
-              <div class="chapter-controls">
-                <button class="action-btn" onclick="playChapter(5)">Play</button>
-                <button class="action-btn secondary" onclick="restartChapter(5)">Restart</button>
-                <button class="action-btn secondary" onclick="downloadChapter('audio/chapter-5.mp3')">Download Chapter</button>
-              </div>
-              <div class="progress-wrap">
-                <div class="progress-label" id="progress-text-5">Progress: 0%</div>
-                <div class="progress-bar">
-                  <div class="progress-fill" id="progress-fill-5"></div>
-                </div>
-              </div>
-            </div>
-
-            <div class="chapter-card">
-              <div class="chapter-title">Chapter 6</div>
-              <audio id="audio-6" controls preload="metadata" data-chapter="6" data-book="book1">
-                <source src="audio/chapter-6.mp3" type="audio/mpeg" />
-                Your browser does not support the audio element.
-              </audio>
-              <div class="chapter-controls">
-                <button class="action-btn" onclick="playChapter(6)">Play</button>
-                <button class="action-btn secondary" onclick="restartChapter(6)">Restart</button>
-                <button class="action-btn secondary" onclick="downloadChapter('audio/chapter-6.mp3')">Download Chapter</button>
-              </div>
-              <div class="progress-wrap">
-                <div class="progress-label" id="progress-text-6">Progress: 0%</div>
-                <div class="progress-bar">
-                  <div class="progress-fill" id="progress-fill-6"></div>
-                </div>
-              </div>
-            </div>
-
-            <div class="chapter-card">
-              <div class="chapter-title">Chapter 7</div>
-              <audio id="audio-7" controls preload="metadata" data-chapter="7" data-book="book1">
-                <source src="audio/chapter-7.mp3" type="audio/mpeg" />
-                Your browser does not support the audio element.
-              </audio>
-              <div class="chapter-controls">
-                <button class="action-btn" onclick="playChapter(7)">Play</button>
-                <button class="action-btn secondary" onclick="restartChapter(7)">Restart</button>
-                <button class="action-btn secondary" onclick="downloadChapter('audio/chapter-7.mp3')">Download Chapter</button>
-              </div>
-              <div class="progress-wrap">
-                <div class="progress-label" id="progress-text-7">Progress: 0%</div>
-                <div class="progress-bar">
-                  <div class="progress-fill" id="progress-fill-7"></div>
-                </div>
-              </div>
-            </div>
-
-            <div class="chapter-card">
-              <div class="chapter-title">Chapter 8</div>
-              <audio id="audio-8" controls preload="metadata" data-chapter="8" data-book="book1">
-                <source src="audio/chapter-8.mp3" type="audio/mpeg" />
-                Your browser does not support the audio element.
-              </audio>
-              <div class="chapter-controls">
-                <button class="action-btn" onclick="playChapter(8)">Play</button>
-                <button class="action-btn secondary" onclick="restartChapter(8)">Restart</button>
-                <button class="action-btn secondary" onclick="downloadChapter('audio/chapter-8.mp3')">Download Chapter</button>
-              </div>
-              <div class="progress-wrap">
-                <div class="progress-label" id="progress-text-8">Progress: 0%</div>
-                <div class="progress-bar">
-                  <div class="progress-fill" id="progress-fill-8"></div>
-                </div>
-              </div>
-            </div>
-
-            <div class="chapter-card">
-              <div class="chapter-title">Chapter 9</div>
-              <audio id="audio-9" controls preload="metadata" data-chapter="9" data-book="book1">
-                <source src="audio/chapter-9.mp3" type="audio/mpeg" />
-                Your browser does not support the audio element.
-              </audio>
-              <div class="chapter-controls">
-                <button class="action-btn" onclick="playChapter(9)">Play</button>
-                <button class="action-btn secondary" onclick="restartChapter(9)">Restart</button>
-                <button class="action-btn secondary" onclick="downloadChapter('audio/chapter-9.mp3')">Download Chapter</button>
-              </div>
-              <div class="progress-wrap">
-                <div class="progress-label" id="progress-text-9">Progress: 0%</div>
-                <div class="progress-bar">
-                  <div class="progress-fill" id="progress-fill-9"></div>
-                </div>
-              </div>
-            </div>
-
-            <div class="chapter-card">
-              <div class="chapter-title">Chapter 10</div>
-              <audio id="audio-10" controls preload="metadata" data-chapter="10" data-book="book1">
-                <source src="audio/chapter-10.mp3" type="audio/mpeg" />
-                Your browser does not support the audio element.
-              </audio>
-              <div class="chapter-controls">
-                <button class="action-btn" onclick="playChapter(10)">Play</button>
-                <button class="action-btn secondary" onclick="restartChapter(10)">Restart</button>
-                <button class="action-btn secondary" onclick="downloadChapter('audio/chapter-10.mp3')">Download Chapter</button>
-              </div>
-              <div class="progress-wrap">
-                <div class="progress-label" id="progress-text-10">Progress: 0%</div>
-                <div class="progress-bar">
-                  <div class="progress-fill" id="progress-fill-10"></div>
-                </div>
-              </div>
-            </div>
+      <div class="chapter-card">
+        <div class="chapter-title">Chapter 1</div>
+        <audio id="audio-1" controls preload="metadata" data-chapter="1" data-book="book1">
+          <source src="audio/chapter 1.mp3" type="audio/mpeg" />
+          Your browser does not support the audio element.
+        </audio>
+        <div class="chapter-controls">
+          <button class="action-btn" onclick="playChapter(1)">Play</button>
+          <button class="action-btn secondary" onclick="restartChapter(1)">Restart</button>
+          <button class="action-btn secondary" onclick="downloadChapter('audio/chapter 1.mp3')">Download Chapter</button>
+        </div>
+        <div class="progress-wrap">
+          <div class="progress-label" id="progress-text-1">Progress: 0%</div>
+          <div class="progress-bar">
+            <div class="progress-fill" id="progress-fill-1"></div>
           </div>
         </div>
       </div>
 
+      <div class="chapter-card">
+        <div class="chapter-title">Chapter 2</div>
+        <audio id="audio-2" controls preload="metadata" data-chapter="2" data-book="book1">
+          <source src="audio/chapter 2.mp3" type="audio/mpeg" />
+          Your browser does not support the audio element.
+        </audio>
+        <div class="chapter-controls">
+          <button class="action-btn" onclick="playChapter(2)">Play</button>
+          <button class="action-btn secondary" onclick="restartChapter(2)">Restart</button>
+          <button class="action-btn secondary" onclick="downloadChapter('audio/chapter 2.mp3')">Download Chapter</button>
+        </div>
+        <div class="progress-wrap">
+          <div class="progress-label" id="progress-text-2">Progress: 0%</div>
+          <div class="progress-bar">
+            <div class="progress-fill" id="progress-fill-2"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="chapter-card">
+        <div class="chapter-title">Chapter 3</div>
+        <audio id="audio-3" controls preload="metadata" data-chapter="3" data-book="book1">
+          <source src="audio/chapter 3.mp3" type="audio/mpeg" />
+          Your browser does not support the audio element.
+        </audio>
+        <div class="chapter-controls">
+          <button class="action-btn" onclick="playChapter(3)">Play</button>
+          <button class="action-btn secondary" onclick="restartChapter(3)">Restart</button>
+          <button class="action-btn secondary" onclick="downloadChapter('audio/chapter 3.mp3')">Download Chapter</button>
+        </div>
+        <div class="progress-wrap">
+          <div class="progress-label" id="progress-text-3">Progress: 0%</div>
+          <div class="progress-bar">
+            <div class="progress-fill" id="progress-fill-3"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="chapter-card">
+        <div class="chapter-title">Chapter 4</div>
+        <audio id="audio-4" controls preload="metadata" data-chapter="4" data-book="book1">
+          <source src="audio/chapter 4.mp3" type="audio/mpeg" />
+          Your browser does not support the audio element.
+        </audio>
+        <div class="chapter-controls">
+          <button class="action-btn" onclick="playChapter(4)">Play</button>
+          <button class="action-btn secondary" onclick="restartChapter(4)">Restart</button>
+          <button class="action-btn secondary" onclick="downloadChapter('audio/chapter 4.mp3')">Download Chapter</button>
+        </div>
+        <div class="progress-wrap">
+          <div class="progress-label" id="progress-text-4">Progress: 0%</div>
+          <div class="progress-bar">
+            <div class="progress-fill" id="progress-fill-4"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="chapter-card">
+        <div class="chapter-title">Chapter 5</div>
+        <audio id="audio-5" controls preload="metadata" data-chapter="5" data-book="book1">
+          <source src="audio/chapter 5.mp3" type="audio/mpeg" />
+          Your browser does not support the audio element.
+        </audio>
+        <div class="chapter-controls">
+          <button class="action-btn" onclick="playChapter(5)">Play</button>
+          <button class="action-btn secondary" onclick="restartChapter(5)">Restart</button>
+          <button class="action-btn secondary" onclick="downloadChapter('audio/chapter 5.mp3')">Download Chapter</button>
+        </div>
+        <div class="progress-wrap">
+          <div class="progress-label" id="progress-text-5">Progress: 0%</div>
+          <div class="progress-bar">
+            <div class="progress-fill" id="progress-fill-5"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="chapter-card">
+        <div class="chapter-title">Chapter 6</div>
+        <audio id="audio-6" controls preload="metadata" data-chapter="6" data-book="book1">
+          <source src="audio/chapter 6.mp3" type="audio/mpeg" />
+          Your browser does not support the audio element.
+        </audio>
+        <div class="chapter-controls">
+          <button class="action-btn" onclick="playChapter(6)">Play</button>
+          <button class="action-btn secondary" onclick="restartChapter(6)">Restart</button>
+          <button class="action-btn secondary" onclick="downloadChapter('audio/chapter 6.mp3')">Download Chapter</button>
+        </div>
+        <div class="progress-wrap">
+          <div class="progress-label" id="progress-text-6">Progress: 0%</div>
+          <div class="progress-bar">
+            <div class="progress-fill" id="progress-fill-6"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="chapter-card">
+        <div class="chapter-title">Chapter 7</div>
+        <audio id="audio-7" controls preload="metadata" data-chapter="7" data-book="book1">
+          <source src="audio/chapter 7.mp3" type="audio/mpeg" />
+          Your browser does not support the audio element.
+        </audio>
+        <div class="chapter-controls">
+          <button class="action-btn" onclick="playChapter(7)">Play</button>
+          <button class="action-btn secondary" onclick="restartChapter(7)">Restart</button>
+          <button class="action-btn secondary" onclick="downloadChapter('audio/chapter 7.mp3')">Download Chapter</button>
+        </div>
+        <div class="progress-wrap">
+          <div class="progress-label" id="progress-text-7">Progress: 0%</div>
+          <div class="progress-bar">
+            <div class="progress-fill" id="progress-fill-7"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="chapter-card">
+        <div class="chapter-title">Chapter 8</div>
+        <audio id="audio-8" controls preload="metadata" data-chapter="8" data-book="book1">
+          <source src="audio/chapter 8.mp3" type="audio/mpeg" />
+          Your browser does not support the audio element.
+        </audio>
+        <div class="chapter-controls">
+          <button class="action-btn" onclick="playChapter(8)">Play</button>
+          <button class="action-btn secondary" onclick="restartChapter(8)">Restart</button>
+          <button class="action-btn secondary" onclick="downloadChapter('audio/chapter 8.mp3')">Download Chapter</button>
+        </div>
+        <div class="progress-wrap">
+          <div class="progress-label" id="progress-text-8">Progress: 0%</div>
+          <div class="progress-bar">
+            <div class="progress-fill" id="progress-fill-8"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="chapter-card">
+        <div class="chapter-title">Chapter 9</div>
+        <audio id="audio-9" controls preload="metadata" data-chapter="9" data-book="book1">
+          <source src="audio/chapter 9.mp3" type="audio/mpeg" />
+          Your browser does not support the audio element.
+        </audio>
+        <div class="chapter-controls">
+          <button class="action-btn" onclick="playChapter(9)">Play</button>
+          <button class="action-btn secondary" onclick="restartChapter(9)">Restart</button>
+          <button class="action-btn secondary" onclick="downloadChapter('audio/chapter 9.mp3')">Download Chapter</button>
+        </div>
+        <div class="progress-wrap">
+          <div class="progress-label" id="progress-text-9">Progress: 0%</div>
+          <div class="progress-bar">
+            <div class="progress-fill" id="progress-fill-9"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="chapter-card">
+        <div class="chapter-title">Chapter 10</div>
+        <audio id="audio-10" controls preload="metadata" data-chapter="10" data-book="book1">
+          <source src="audio/chapter 10.mp3" type="audio/mpeg" />
+          Your browser does not support the audio element.
+        </audio>
+        <div class="chapter-controls">
+          <button class="action-btn" onclick="playChapter(10)">Play</button>
+          <button class="action-btn secondary" onclick="restartChapter(10)">Restart</button>
+          <button class="action-btn secondary" onclick="downloadChapter('audio/chapter 10.mp3')">Download Chapter</button>
+        </div>
+        <div class="progress-wrap">
+          <div class="progress-label" id="progress-text-10">Progress: 0%</div>
+          <div class="progress-bar">
+            <div class="progress-fill" id="progress-fill-10"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="chapter-card">
+        <div class="chapter-title">Chapter 11</div>
+        <audio id="audio-11" controls preload="metadata" data-chapter="11" data-book="book1">
+          <source src="audio/chapter 11.mp3" type="audio/mpeg" />
+          Your browser does not support the audio element.
+        </audio>
+        <div class="chapter-controls">
+          <button class="action-btn" onclick="playChapter(11)">Play</button>
+          <button class="action-btn secondary" onclick="restartChapter(11)">Restart</button>
+          <button class="action-btn secondary" onclick="downloadChapter('audio/chapter 11.mp3')">Download Chapter</button>
+        </div>
+        <div class="progress-wrap">
+          <div class="progress-label" id="progress-text-11">Progress: 0%</div>
+          <div class="progress-bar">
+            <div class="progress-fill" id="progress-fill-11"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="chapter-card">
+        <div class="chapter-title">Chapter 12</div>
+        <audio id="audio-12" controls preload="metadata" data-chapter="12" data-book="book1">
+          <source src="audio/chapter 12.mp3" type="audio/mpeg" />
+          Your browser does not support the audio element.
+        </audio>
+        <div class="chapter-controls">
+          <button class="action-btn" onclick="playChapter(12)">Play</button>
+          <button class="action-btn secondary" onclick="restartChapter(12)">Restart</button>
+          <button class="action-btn secondary" onclick="downloadChapter('audio/chapter 12.mp3')">Download Chapter</button>
+        </div>
+        <div class="progress-wrap">
+          <div class="progress-label" id="progress-text-12">Progress: 0%</div>
+          <div class="progress-bar">
+            <div class="progress-fill" id="progress-fill-12"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="chapter-card">
+        <div class="chapter-title">Chapter 13</div>
+        <audio id="audio-13" controls preload="metadata" data-chapter="13" data-book="book1">
+          <source src="audio/chapter 13.mp3" type="audio/mpeg" />
+          Your browser does not support the audio element.
+        </audio>
+        <div class="chapter-controls">
+          <button class="action-btn" onclick="playChapter(13)">Play</button>
+          <button class="action-btn secondary" onclick="restartChapter(13)">Restart</button>
+          <button class="action-btn secondary" onclick="downloadChapter('audio/chapter 13.mp3')">Download Chapter</button>
+        </div>
+        <div class="progress-wrap">
+          <div class="progress-label" id="progress-text-13">Progress: 0%</div>
+          <div class="progress-bar">
+            <div class="progress-fill" id="progress-fill-13"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="chapter-card">
+        <div class="chapter-title">Chapter 14</div>
+        <audio id="audio-14" controls preload="metadata" data-chapter="14" data-book="book1">
+          <source src="audio/chapter 14.mp3" type="audio/mpeg" />
+          Your browser does not support the audio element.
+        </audio>
+        <div class="chapter-controls">
+          <button class="action-btn" onclick="playChapter(14)">Play</button>
+          <button class="action-btn secondary" onclick="restartChapter(14)">Restart</button>
+          <button class="action-btn secondary" onclick="downloadChapter('audio/chapter 14.mp3')">Download Chapter</button>
+        </div>
+        <div class="progress-wrap">
+          <div class="progress-label" id="progress-text-14">Progress: 0%</div>
+          <div class="progress-bar">
+            <div class="progress-fill" id="progress-fill-14"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="chapter-card">
+        <div class="chapter-title">Chapter 15</div>
+        <audio id="audio-15" controls preload="metadata" data-chapter="15" data-book="book1">
+          <source src="audio/chapter 15.mp3" type="audio/mpeg" />
+          Your browser does not support the audio element.
+        </audio>
+        <div class="chapter-controls">
+          <button class="action-btn" onclick="playChapter(15)">Play</button>
+          <button class="action-btn secondary" onclick="restartChapter(15)">Restart</button>
+          <button class="action-btn secondary" onclick="downloadChapter('audio/chapter 15.mp3')">Download Chapter</button>
+        </div>
+        <div class="progress-wrap">
+          <div class="progress-label" id="progress-text-15">Progress: 0%</div>
+          <div class="progress-bar">
+            <div class="progress-fill" id="progress-fill-15"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="chapter-card">
+        <div class="chapter-title">Chapter 16</div>
+        <audio id="audio-16" controls preload="metadata" data-chapter="16" data-book="book1">
+          <source src="audio/chapter 16.mp3" type="audio/mpeg" />
+          Your browser does not support the audio element.
+        </audio>
+        <div class="chapter-controls">
+          <button class="action-btn" onclick="playChapter(16)">Play</button>
+          <button class="action-btn secondary" onclick="restartChapter(16)">Restart</button>
+          <button class="action-btn secondary" onclick="downloadChapter('audio/chapter 16.mp3')">Download Chapter</button>
+        </div>
+        <div class="progress-wrap">
+          <div class="progress-label" id="progress-text-16">Progress: 0%</div>
+          <div class="progress-bar">
+            <div class="progress-fill" id="progress-fill-16"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="chapter-card">
+        <div class="chapter-title">Chapter 17</div>
+        <audio id="audio-17" controls preload="metadata" data-chapter="17" data-book="book1">
+          <source src="audio/chapter 17.mp3" type="audio/mpeg" />
+          Your browser does not support the audio element.
+        </audio>
+        <div class="chapter-controls">
+          <button class="action-btn" onclick="playChapter(17)">Play</button>
+          <button class="action-btn secondary" onclick="restartChapter(17)">Restart</button>
+          <button class="action-btn secondary" onclick="downloadChapter('audio/chapter 17.mp3')">Download Chapter</button>
+        </div>
+        <div class="progress-wrap">
+          <div class="progress-label" id="progress-text-17">Progress: 0%</div>
+          <div class="progress-bar">
+            <div class="progress-fill" id="progress-fill-17"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="chapter-card">
+        <div class="chapter-title">Chapter 18</div>
+        <audio id="audio-18" controls preload="metadata" data-chapter="18" data-book="book1">
+          <source src="audio/chapter 18.mp3" type="audio/mpeg" />
+          Your browser does not support the audio element.
+        </audio>
+        <div class="chapter-controls">
+          <button class="action-btn" onclick="playChapter(18)">Play</button>
+          <button class="action-btn secondary" onclick="restartChapter(18)">Restart</button>
+          <button class="action-btn secondary" onclick="downloadChapter('audio/chapter 18.mp3')">Download Chapter</button>
+        </div>
+        <div class="progress-wrap">
+          <div class="progress-label" id="progress-text-18">Progress: 0%</div>
+          <div class="progress-bar">
+            <div class="progress-fill" id="progress-fill-18"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="chapter-card">
+        <div class="chapter-title">Chapter 19</div>
+        <audio id="audio-19" controls preload="metadata" data-chapter="19" data-book="book1">
+          <source src="audio/chapter 19.mp3" type="audio/mpeg" />
+          Your browser does not support the audio element.
+        </audio>
+        <div class="chapter-controls">
+          <button class="action-btn" onclick="playChapter(19)">Play</button>
+          <button class="action-btn secondary" onclick="restartChapter(19)">Restart</button>
+          <button class="action-btn secondary" onclick="downloadChapter('audio/chapter 19.mp3')">Download Chapter</button>
+        </div>
+        <div class="progress-wrap">
+          <div class="progress-label" id="progress-text-19">Progress: 0%</div>
+          <div class="progress-bar">
+            <div class="progress-fill" id="progress-fill-19"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="chapter-card">
+        <div class="chapter-title">Chapter 20</div>
+        <audio id="audio-20" controls preload="metadata" data-chapter="20" data-book="book1">
+          <source src="audio/chapter 20.mp3" type="audio/mpeg" />
+          Your browser does not support the audio element.
+        </audio>
+        <div class="chapter-controls">
+          <button class="action-btn" onclick="playChapter(20)">Play</button>
+          <button class="action-btn secondary" onclick="restartChapter(20)">Restart</button>
+          <button class="action-btn secondary" onclick="downloadChapter('audio/chapter 20.mp3')">Download Chapter</button>
+        </div>
+        <div class="progress-wrap">
+          <div class="progress-label" id="progress-text-20">Progress: 0%</div>
+          <div class="progress-bar">
+            <div class="progress-fill" id="progress-fill-20"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="chapter-card">
+        <div class="chapter-title">Chapter 21</div>
+        <audio id="audio-21" controls preload="metadata" data-chapter="21" data-book="book1">
+          <source src="audio/chapter 21.mp3" type="audio/mpeg" />
+          Your browser does not support the audio element.
+        </audio>
+        <div class="chapter-controls">
+          <button class="action-btn" onclick="playChapter(21)">Play</button>
+          <button class="action-btn secondary" onclick="restartChapter(21)">Restart</button>
+          <button class="action-btn secondary" onclick="downloadChapter('audio/chapter 21.mp3')">Download Chapter</button>
+        </div>
+        <div class="progress-wrap">
+          <div class="progress-label" id="progress-text-21">Progress: 0%</div>
+          <div class="progress-bar">
+            <div class="progress-fill" id="progress-fill-21"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="chapter-card">
+        <div class="chapter-title">Chapter 22</div>
+        <audio id="audio-22" controls preload="metadata" data-chapter="22" data-book="book1">
+          <source src="audio/chapter 22.mp3" type="audio/mpeg" />
+          Your browser does not support the audio element.
+        </audio>
+        <div class="chapter-controls">
+          <button class="action-btn" onclick="playChapter(22)">Play</button>
+          <button class="action-btn secondary" onclick="restartChapter(22)">Restart</button>
+          <button class="action-btn secondary" onclick="downloadChapter('audio/chapter 22.mp3')">Download Chapter</button>
+        </div>
+        <div class="progress-wrap">
+          <div class="progress-label" id="progress-text-22">Progress: 0%</div>
+          <div class="progress-bar">
+            <div class="progress-fill" id="progress-fill-22"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="chapter-card">
+        <div class="chapter-title">Chapter 23</div>
+        <audio id="audio-23" controls preload="metadata" data-chapter="23" data-book="book1">
+          <source src="audio/chapter 23.mp3" type="audio/mpeg" />
+          Your browser does not support the audio element.
+        </audio>
+        <div class="chapter-controls">
+          <button class="action-btn" onclick="playChapter(23)">Play</button>
+          <button class="action-btn secondary" onclick="restartChapter(23)">Restart</button>
+          <button class="action-btn secondary" onclick="downloadChapter('audio/chapter 23.mp3')">Download Chapter</button>
+        </div>
+        <div class="progress-wrap">
+          <div class="progress-label" id="progress-text-23">Progress: 0%</div>
+          <div class="progress-bar">
+            <div class="progress-fill" id="progress-fill-23"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="chapter-card">
+        <div class="chapter-title">Chapter 24</div>
+        <audio id="audio-24" controls preload="metadata" data-chapter="24" data-book="book1">
+          <source src="audio/chapter 24.mp3" type="audio/mpeg" />
+          Your browser does not support the audio element.
+        </audio>
+        <div class="chapter-controls">
+          <button class="action-btn" onclick="playChapter(24)">Play</button>
+          <button class="action-btn secondary" onclick="restartChapter(24)">Restart</button>
+          <button class="action-btn secondary" onclick="downloadChapter('audio/chapter 24.mp3')">Download Chapter</button>
+        </div>
+        <div class="progress-wrap">
+          <div class="progress-label" id="progress-text-24">Progress: 0%</div>
+          <div class="progress-bar">
+            <div class="progress-fill" id="progress-fill-24"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="chapter-card">
+        <div class="chapter-title">Chapter 25</div>
+        <audio id="audio-25" controls preload="metadata" data-chapter="25" data-book="book1">
+          <source src="audio/chapter 25.mp3" type="audio/mpeg" />
+          Your browser does not support the audio element.
+        </audio>
+        <div class="chapter-controls">
+          <button class="action-btn" onclick="playChapter(25)">Play</button>
+          <button class="action-btn secondary" onclick="restartChapter(25)">Restart</button>
+          <button class="action-btn secondary" onclick="downloadChapter('audio/chapter 25.mp3')">Download Chapter</button>
+        </div>
+        <div class="progress-wrap">
+          <div class="progress-label" id="progress-text-25">Progress: 0%</div>
+          <div class="progress-bar">
+            <div class="progress-fill" id="progress-fill-25"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="chapter-card">
+        <div class="chapter-title">Chapter 26</div>
+        <audio id="audio-26" controls preload="metadata" data-chapter="26" data-book="book1">
+          <source src="audio/chapter 26.mp3" type="audio/mpeg" />
+          Your browser does not support the audio element.
+        </audio>
+        <div class="chapter-controls">
+          <button class="action-btn" onclick="playChapter(26)">Play</button>
+          <button class="action-btn secondary" onclick="restartChapter(26)">Restart</button>
+          <button class="action-btn secondary" onclick="downloadChapter('audio/chapter 26.mp3')">Download Chapter</button>
+        </div>
+        <div class="progress-wrap">
+          <div class="progress-label" id="progress-text-26">Progress: 0%</div>
+          <div class="progress-bar">
+            <div class="progress-fill" id="progress-fill-26"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="chapter-card">
+        <div class="chapter-title">Chapter 27</div>
+        <audio id="audio-27" controls preload="metadata" data-chapter="27" data-book="book1">
+          <source src="audio/chapter 27.mp3" type="audio/mpeg" />
+          Your browser does not support the audio element.
+        </audio>
+        <div class="chapter-controls">
+          <button class="action-btn" onclick="playChapter(27)">Play</button>
+          <button class="action-btn secondary" onclick="restartChapter(27)">Restart</button>
+          <button class="action-btn secondary" onclick="downloadChapter('audio/chapter 27.mp3')">Download Chapter</button>
+        </div>
+        <div class="progress-wrap">
+          <div class="progress-label" id="progress-text-27">Progress: 0%</div>
+          <div class="progress-bar">
+            <div class="progress-fill" id="progress-fill-27"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="chapter-card">
+        <div class="chapter-title">Chapter 28</div>
+        <audio id="audio-28" controls preload="metadata" data-chapter="28" data-book="book1">
+          <source src="audio/chapter 28.mp3" type="audio/mpeg" />
+          Your browser does not support the audio element.
+        </audio>
+        <div class="chapter-controls">
+          <button class="action-btn" onclick="playChapter(28)">Play</button>
+          <button class="action-btn secondary" onclick="restartChapter(28)">Restart</button>
+          <button class="action-btn secondary" onclick="downloadChapter('audio/chapter 28.mp3')">Download Chapter</button>
+        </div>
+        <div class="progress-wrap">
+          <div class="progress-label" id="progress-text-28">Progress: 0%</div>
+          <div class="progress-bar">
+            <div class="progress-fill" id="progress-fill-28"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="chapter-card">
+        <div class="chapter-title">Chapter 29</div>
+        <audio id="audio-29" controls preload="metadata" data-chapter="29" data-book="book1">
+          <source src="audio/chapter 29.mp3" type="audio/mpeg" />
+          Your browser does not support the audio element.
+        </audio>
+        <div class="chapter-controls">
+          <button class="action-btn" onclick="playChapter(29)">Play</button>
+          <button class="action-btn secondary" onclick="restartChapter(29)">Restart</button>
+          <button class="action-btn secondary" onclick="downloadChapter('audio/chapter 29.mp3')">Download Chapter</button>
+        </div>
+        <div class="progress-wrap">
+          <div class="progress-label" id="progress-text-29">Progress: 0%</div>
+          <div class="progress-bar">
+            <div class="progress-fill" id="progress-fill-29"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="chapter-card">
+        <div class="chapter-title">Chapter 30</div>
+        <audio id="audio-30" controls preload="metadata" data-chapter="30" data-book="book1">
+          <source src="audio/chapter 30.mp3" type="audio/mpeg" />
+          Your browser does not support the audio element.
+        </audio>
+        <div class="chapter-controls">
+          <button class="action-btn" onclick="playChapter(30)">Play</button>
+          <button class="action-btn secondary" onclick="restartChapter(30)">Restart</button>
+          <button class="action-btn secondary" onclick="downloadChapter('audio/chapter 30.mp3')">Download Chapter</button>
+        </div>
+        <div class="progress-wrap">
+          <div class="progress-label" id="progress-text-30">Progress: 0%</div>
+          <div class="progress-bar">
+            <div class="progress-fill" id="progress-fill-30"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="chapter-card">
+        <div class="chapter-title">Epilogue</div>
+        <audio id="audio-31" controls preload="metadata" data-chapter="31" data-book="book1">
+          <source src="audio/epilogue.mp3" type="audio/mpeg" />
+          Your browser does not support the audio element.
+        </audio>
+        <div class="chapter-controls">
+          <button class="action-btn" onclick="playChapter(31)">Play</button>
+          <button class="action-btn secondary" onclick="restartChapter(31)">Restart</button>
+          <button class="action-btn secondary" onclick="downloadChapter('audio/epilogue.mp3')">Download Chapter</button>
+        </div>
+        <div class="progress-wrap">
+          <div class="progress-label" id="progress-text-31">Progress: 0%</div>
+          <div class="progress-bar">
+            <div class="progress-fill" id="progress-fill-31"></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
 <!-- BOOK 2 TEMPLATE -->
       <div class="book-card">
         <button class="book-toggle" onclick="toggleBook('book2')">
